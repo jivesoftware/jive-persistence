@@ -16,7 +16,7 @@
 
 
 var q = require('q');
-var jive = require('../../api');
+var jive = require('jive-sdk');
 
 module.exports = function(serviceConfig) {
     var databaseUrl;
