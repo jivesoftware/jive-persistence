@@ -1,0 +1,37 @@
+{
+  "name": "jive-persistence",
+  "description": "MongoDB persistence strategy for jive-sdk",
+  "version": "0.0.1",
+  "main": "./mongo.js",
+  "author": {
+    "name": "Jive Software",
+    "email": "jivedev@jivesoftware"
+  },
+  "dependencies": {
+    "q": "0.9.3",
+    "mongojs": "0.7.4",
+    "mongodb": "1.2.14"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  },
+  "contributors": [
+    {
+      "name": "Aron Racho",
+      "email": "aron.racho@jivesoftware.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jivesoftware/jive-persistence"
+  },
+  "keywords": [
+    "jive",
+    "framework",
+    "app",
+    "purposeful_places",
+    "api"
+  ]
+}
