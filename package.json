@@ -1,5 +1,5 @@
 {
-  "name": "jive-persistence",
+  "name": "jive-persistence-mongo",
   "description": "MongoDB persistence strategy for jive-sdk",
   "version": "0.0.1",
   "main": "./mongo.js",
@@ -26,7 +26,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/jivesoftware/jive-persistence"
+    "url": "git://github.com/jivesoftware/jive-persistence-mongo"
   },
   "keywords": [
     "jive",
