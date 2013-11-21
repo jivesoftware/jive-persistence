@@ -118,7 +118,7 @@ module.exports = function(serviceConfig) {
                     deferred.resolve([]);
                     return;
                 }
-                deferred.resolve(items);
+                deferred.resolve(items[0]);
             });
 
             return deferred.promise;
