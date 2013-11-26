@@ -85,19 +85,24 @@ module.exports = function(serviceConfig) {
          * with an array of the results when done.
          * @param collectionID
          * @param criteria
+         * @param cursor if true, then returned item is a cursor; otherwise its a concrete collection (array) of items
          */
-        find : function( collectionID, criteria) {
+        find : function( collectionID, criteria, cursor) {
             var deferred = q.defer();
 
             var collection = getCollection(collectionID);
 
-            collection.find(criteria, function(err, items) {
-                if( err || !items || items.length < 1) {
-                    deferred.resolve([]);
-                    return;
-                }
-                deferred.resolve(items);
-            });
+            if ( !cursor ) {
+                collection.find(criteria, function(err, items) {
+                    if( err || !items || items.length < 1) {
+                        deferred.resolve([]);
+                        return;
+                    }
+                    deferred.resolve(items);
+                });
+            } else {
+                deferred.resolve( collection.find(criteria) );
+            }
 
             return deferred.promise;
         },
