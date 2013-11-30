@@ -120,7 +120,7 @@ module.exports = function(serviceConfig) {
 
             collection.find(criteria, function(err, items) {
                 if( err || !items || items.length < 1) {
-                    deferred.resolve([]);
+                    deferred.resolve();
                     return;
                 }
                 deferred.resolve(items[0]);
@@ -152,7 +152,20 @@ module.exports = function(serviceConfig) {
         },
 
         close: function() {
-            return q();
+            return q.resolve();
+        },
+
+        destroy: function() {
+            var p = q.defer();
+            db.dropDatabase(function(err, done) {
+                if ( err ) {
+                    p.reject(err);
+                    return;
+                }
+
+                p.resolve(done);
+            });
+            return p.promise;
         }
 
     };
