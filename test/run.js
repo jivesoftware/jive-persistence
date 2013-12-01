@@ -10,23 +10,13 @@ var makeRunner = function() {
     };
 
     runner.onTestStart = function(test) {
-        var persistence = new jiveMongo({
+        test['ctx']['persistence'] = new jiveMongo({
             'databaseUrl' : 'mongodb://localhost:27017/mongoTestDB'
-        });
-        test['ctx']['persistence'] = persistence;
+        });;
     };
 
     runner.onTestEnd = function(test) {
         test['ctx']['persistence'].destroy();
-    };
-
-    runner.setupSuite = function(test) {
-        test['testUtils'] = testUtils;
-        test['jive'] = jive;
-        test['jiveMongo'] = jiveMongo;
-    };
-
-    runner.teardownSuite = function(test) {
     };
 
     return runner;
@@ -35,6 +25,9 @@ var makeRunner = function() {
 makeRunner().runTests(
     {
         'context' : {
+            'testUtils' : testUtils,
+            'jive' : jive,
+            'jiveMongo' : jiveMongo
         },
         'runMode' : 'test',
         'testcases' : process.cwd()  + '/library',
