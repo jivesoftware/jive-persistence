@@ -38,10 +38,13 @@ module.exports = function(serviceConfig) {
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Private
 
+    // driver
+    var mongoDb = require('mongojs');
+
     /**
      * Reference to the mongo db schema.
      */
-    var db = require('mongojs').connect(databaseUrl);
+    var db = mongoDb.connect(databaseUrl);
 
     /**
      * Collections are created dynamically in mongodb.
@@ -65,6 +68,10 @@ module.exports = function(serviceConfig) {
          */
         save : function( collectionID, key, data) {
             var deferred = q.defer();
+
+            if ( data && data._id && ( typeof(data._id) === 'string' ) ) {
+                data._id = mongoDb.ObjectID.createFromHexString(data._id)
+            }
 
             data['id'] = key;
             var collection = getCollection(collectionID);
