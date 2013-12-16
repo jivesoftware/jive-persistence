@@ -1,7 +1,7 @@
 {
   "name": "jive-persistence-mongo",
   "description": "MongoDB persistence strategy for jive-sdk",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "main": "./mongo.js",
   "author": {
     "name": "Jive Software",

@@ -14,7 +14,6 @@
  *    limitations under the License.
  */
 
-
 var q = require('q');
 var jive = require('jive-sdk');
 
