@@ -69,7 +69,7 @@ module.exports = function(serviceConfig) {
             var deferred = q.defer();
 
             if ( data && data._id && ( typeof(data._id) === 'string' ) ) {
-                data._id = mongoDb.ObjectID.createFromHexString(data._id)
+                data._id = new require('mongodb').ObjectID(data._id);
             }
 
             data['id'] = key;
