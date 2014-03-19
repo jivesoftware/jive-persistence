@@ -18,12 +18,10 @@ var q = require('q');
 var jive = require('jive-sdk');
 
 module.exports = function(serviceConfig) {
-    var databaseUrl;
 
+    var config = serviceConfig || {};
     // setup database url
-    if (serviceConfig ) {
-        databaseUrl = serviceConfig['databaseUrl'];
-    }
+    var databaseUrl = config['databaseUrl'] || process.env.DB_URI;
 
     if ( !databaseUrl ) {
         // failover to default mongodb
