@@ -74,7 +74,7 @@ module.exports = function(serviceConfig) {
             var collection = getCollection(collectionID);
             collection.update({'id':key}, data, {'upsert':true}, function(err, saved ) {
                 if( err || !saved ) {
-                    throw err;
+                    deferred.reject(err);
                 }
                 else {
                     deferred.resolve(data);
@@ -98,7 +98,11 @@ module.exports = function(serviceConfig) {
 
             if ( !cursor ) {
                 collection.find(criteria, function(err, items) {
-                    if( err || !items || items.length < 1) {
+                    if (err) {
+                        deferred.reject(err);
+                        return;
+                    }
+                    if( !items || items.length < 1) {
                         deferred.resolve([]);
                         return;
                     }
@@ -123,7 +127,11 @@ module.exports = function(serviceConfig) {
             var criteria = { 'id': key };
 
             collection.find(criteria, function(err, items) {
-                if( err || !items || items.length < 1) {
+                if (err) {
+                    deferred.reject(err);
+                    return;
+                }
+                if( !items || items.length < 1) {
                     deferred.resolve();
                     return;
                 }
@@ -149,6 +157,10 @@ module.exports = function(serviceConfig) {
             }
 
             collection.remove({"id": key}, function(err, items) {
+                if (err) {
+                    deferred.reject(err);
+                    return;
+                }
                 deferred.resolve(items);
             });
 
