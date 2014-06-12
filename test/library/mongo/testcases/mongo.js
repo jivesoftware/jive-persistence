@@ -63,6 +63,24 @@ describe('jive', function () {
                 });
         });
 
+        it('remove - object', function (done) {
+            var jive = this['jive'];
+            var testUtils = this['testUtils'];
+            var persistence = this['persistence'];
+
+            test.testRemoveObject(testUtils, persistence).then(
+                function() {
+                    done();
+                },
+
+                function(e) {
+                    assert.fail(e);
+                }
+            ).finally( function() {
+                    return persistence.close();
+                });
+        });
+
         // xxx todo
 
     });

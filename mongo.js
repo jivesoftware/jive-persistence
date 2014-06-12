@@ -151,12 +151,17 @@ module.exports = function(serviceConfig) {
             var deferred = q.defer();
 
             var collection = getCollection(collectionID);
-            if (!collection ) {
+            if (!collection) {
                 deferred.resolve();
                 return;
             }
 
-            collection.remove({"id": key}, function(err, items) {
+            var doc = key;
+            if (typeof key !== 'object') {
+                doc = {"id": key};
+            }
+
+            collection.remove(doc, function(err, items) {
                 if (err) {
                     deferred.reject(err);
                     return;
