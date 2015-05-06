@@ -1,17 +1,17 @@
 {
   "name": "jive-persistence-mongo",
   "description": "MongoDB persistence strategy for jive-sdk",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "main": "./mongo.js",
   "author": {
     "name": "Jive Software",
     "email": "jivedev@jivesoftware"
   },
   "dependencies": {
-    "q": "0.9.3",
-    "mongojs": "0.13.0",
-    "mongodb": "1.4.5",
-    "jive-sdk" : "*"
+    "jive-sdk": "*",
+    "mongodb": "^2.0.28",
+    "mongojs": "^0.18.2",
+    "q": "^0.9.3"
   },
   "devDependencies": {},
   "optionalDependencies": {},
