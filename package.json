@@ -11,7 +11,7 @@
     "jive-sdk": "*",
     "mongodb": "^2.0.28",
     "mongojs": "^0.18.2",
-    "q": "^0.9.3"
+    "q": "^1.3.0"
   },
   "devDependencies": {},
   "optionalDependencies": {},
