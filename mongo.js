@@ -41,7 +41,7 @@ module.exports = function(serviceConfig) {
     /**
      * Reference to the mongo db schema.
      */
-    var db = mongoDb.connect(databaseUrl);
+    var db = mongoDb(databaseUrl);
 
     /**
      * Collections are created dynamically in mongodb.
